@@ -24,7 +24,8 @@ export function createUser(props) {
 }
 
 export function fetchUser(id) {
-  const request = axios.get(`${ROOT_URL}/users/${id}`)
+  const request = axios.get(`${ROOT_URL}/users/${id}`);
+  
   return {
     type: FETCH_USER,
     payload: request
