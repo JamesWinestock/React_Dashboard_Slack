@@ -11,12 +11,13 @@ class UsersIndex extends Component {
   }
 
   renderUsers() {
+    console.log(this.props.users)
     return this.props.users.map((user) => {
       return (
         <li className="list-group-item" key={user.id}>
           <Link to={"users/" + user.id}>
-          <span className="pull-xs-right">{user.userEntry.day}</span>
-          <strong>{user.userEntry.name}</strong>
+          <span className="pull-xs-right">{user.day}</span>
+          <strong>{user.name}</strong>
           </Link>
         </li>
       );
