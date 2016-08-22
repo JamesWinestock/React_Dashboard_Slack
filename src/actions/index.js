@@ -4,6 +4,7 @@ export const FETCH_USERS = 'FETCH_USERS';
 export const CREATE_USER = 'CREATE_USER';
 export const FETCH_USER = 'FETCH_USER';
 export const DELETE_USER = 'DELETE_USER';
+export const UPDATE_USER = 'UPDATE_USER';
 
 const ROOT_URL = 'http://localhost:3000';
 
@@ -37,6 +38,14 @@ export function deleteUser(id) {
 
   return {
     type: DELETE_USER,
+    payload: request
+  };
+}
+
+export function updateUser(props, id) {
+  const request = axios.post(`${ROOT_URL}/users/${id}`, props);
+  return {
+    type: UPDATE_USER,
     payload: request
   };
 }

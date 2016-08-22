@@ -16,8 +16,12 @@ class UsersIndex extends Component {
       return (
         <li className="list-group-item" key={user.id}>
           <Link to={"users/" + user.id}>
-          <span className="pull-xs-right">{user.day}</span>
-          <strong>{user.name}</strong>
+          <span className="pull-xs-right">{user.day} </span>
+          <strong>{user.name}   </strong>
+          <span> { '|' }</span>
+          </Link>
+          <Link to={"users/update/" + user.id}>
+            <span className={"pull-xs-left"}>update user</span>
           </Link>
         </li>
       );

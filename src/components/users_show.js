@@ -34,6 +34,7 @@ static contextTypes = {
         </button>
         <h2>{user.name}</h2>
         <h5>Cleaning Day:{user.day}</h5>
+
       </div>
     );
   }
