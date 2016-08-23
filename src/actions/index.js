@@ -35,12 +35,12 @@ export function fetchUser(id) {
 
 export function deleteUser(id) {
   const request = axios.delete(`${ROOT_URL}/users/${id}`);
-
   return {
     type: DELETE_USER,
     payload: request
   };
 }
+
 
 export function updateUser(props, id) {
   const request = axios.post(`${ROOT_URL}/users/${id}`, props);

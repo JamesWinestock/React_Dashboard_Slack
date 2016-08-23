@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
 import { updateUser } from '../actions/index';
 import { Link } from 'react-router';
@@ -7,6 +8,7 @@ class UsersUpdate extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
+
 
 
   onSubmit(props) {
@@ -44,8 +46,11 @@ class UsersUpdate extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ updateUser}, dispatch);
+}
 
 export default UsersUpdate = reduxForm({
   form: 'UsersUpdateForm',
   fields: ['name', 'email', 'day']
-}, null, { updateUser })(UsersUpdate);
+}, null, mapDispatchToProps)(UsersUpdate);

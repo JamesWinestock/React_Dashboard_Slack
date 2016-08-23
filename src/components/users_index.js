@@ -11,7 +11,6 @@ class UsersIndex extends Component {
   }
 
   renderUsers() {
-    console.log(this.props.users)
     return this.props.users.map((user) => {
       return (
         <li className="list-group-item" key={user.id}>

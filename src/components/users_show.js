@@ -44,6 +44,4 @@ function mapStateToProps(state) {
   return { user: state.users.user};
 }
 
-
-
 export default connect(mapStateToProps, { fetchUser, deleteUser})(UsersShow);
