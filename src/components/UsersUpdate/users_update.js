@@ -12,6 +12,7 @@ class UsersUpdate extends Component {
 
 
   onSubmit(props) {
+    console.log(this.props.params)
     this.props.updateUser(props, this.props.params.id)
     .then(() => {
       this.context.router.push('/');
@@ -26,7 +27,8 @@ class UsersUpdate extends Component {
         <h3>Update User</h3>
         <div className={`form-group`}>
           <label>Name</label>
-          <input type="text" className="form-control" {...name}/ >
+          <input type="text" className="form-control"
+           {...name}/ >
         </div>
 
         <div className={`form-group`}>

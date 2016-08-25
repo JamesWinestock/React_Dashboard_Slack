@@ -26,15 +26,15 @@ static contextTypes = {
       return <div>Loading...</div>
     }
     return (
-      <div>
+      <div className="jumbotron">
         <Link to="/">Back to list</Link>
         <button className="btn btn-danger pull-xs-right"
         onClick={this.onDeleteClick.bind(this)}>
           Delete User
         </button>
-        <h2>{user.name}</h2>
-        <h5>Cleaning Day:{user.day}</h5>
-        <h5>Cleaning Week:{user.week}</h5>
+        <h2 className="display-3">{user.name}</h2>
+        <h5 className="lead">Cleaning Day:{user.day}</h5>
+        <h5 className="lead">Cleaning Week:{user.week}</h5>
 
       </div>
     );

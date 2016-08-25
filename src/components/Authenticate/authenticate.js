@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { checkAuth } from '../../actions/index';
+import { AUTH_USER } from '../../actions/auth';
 import { Link } from 'react-router';
 
 class Authenticate extends Component {
@@ -9,16 +10,10 @@ class Authenticate extends Component {
   };
 
 
-  onSubmit(props) {
-    this.props.checkAuth()
-
-    .then((user) => {
-      if(user.payload.data.username === props.username){
-     console.log('success')
-   } else {
-     console.log('error')
-   }
-
+    onSubmit(props) {
+      this.props.checkAuth(props)
+      .then((response) => {
+        dispatch({ type: AUTH_USER})
     });
   }
   render () {

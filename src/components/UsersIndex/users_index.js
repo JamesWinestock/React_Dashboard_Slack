@@ -24,11 +24,11 @@ class UsersIndex extends Component {
       return (
         <li className="list-group-item" key={user.id}>
           <Link to={"users/" + user.id}>
+            <span>{user.name}</span>
             <span className="pull-xs-left">Cleaning day:{user.day} week:{user.week}</span>
-            <strong className="pull-xs-left">{user.name}</strong>
           </Link>
           <Link to={"users/update/" + user.id}>
-            <span className={"pull-xs-right"}>update user</span>
+            <span className={"pull-xs-right"}>  update user</span>
           </Link>
         </li>
       );
@@ -40,18 +40,13 @@ class UsersIndex extends Component {
     return (
       <div>
         <div className="text-xs-right">
-          <div className="red-text">
-            red text
-          </div>
+        <Link to="/users/new" className="btn btn-primary">
+        Add A user
+        </Link>
           <h3>Users</h3>
             <ul className="list-group">
               {this.renderUsers()}
             </ul>
-            <div>
-              <Link to="/users/new" className="btn btn-primary">
-              Add A user
-              </Link>
-            </div>
         </div>
       </div>
     );
