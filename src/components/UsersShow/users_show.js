@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchUser, deleteUser } from '../actions/index';
+import { fetchUser, deleteUser } from '../../actions/index';
 import { Link } from 'react-router';
 
 
@@ -34,6 +34,7 @@ static contextTypes = {
         </button>
         <h2>{user.name}</h2>
         <h5>Cleaning Day:{user.day}</h5>
+        <h5>Cleaning Week:{user.week}</h5>
 
       </div>
     );

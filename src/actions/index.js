@@ -5,6 +5,7 @@ export const CREATE_USER = 'CREATE_USER';
 export const FETCH_USER = 'FETCH_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const UPDATE_USER = 'UPDATE_USER';
+export const CHECK_AUTH = 'CHECK_AUTH';
 
 const ROOT_URL = 'http://localhost:3000';
 
@@ -48,4 +49,13 @@ export function updateUser(props, id) {
     type: UPDATE_USER,
     payload: request
   };
+}
+
+export function checkAuth(props) {
+  const request = axios.get(`${ROOT_URL}/authenticate`, props);
+  return {
+    type: CHECK_AUTH,
+    payload: request
+  };
+
 }

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
-import { updateUser } from '../actions/index';
+import { updateUser } from '../../actions/index';
 import { Link } from 'react-router';
 
 class UsersUpdate extends Component {
@@ -20,7 +20,7 @@ class UsersUpdate extends Component {
 
 
   render() {
-    const { fields: { name, email, day }, handleSubmit } = this.props;
+    const { fields: { name, email, day, week }, handleSubmit } = this.props;
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Update User</h3>
@@ -39,6 +39,11 @@ class UsersUpdate extends Component {
           <input type="text" className="form-control" {...day}/ >
         </div>
 
+        <div className={`form-group`}>
+          <label>Week</label>
+          <input type="text" className="form-control" {...week}/ >
+        </div>
+
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
@@ -52,5 +57,5 @@ function mapDispatchToProps(dispatch) {
 
 export default UsersUpdate = reduxForm({
   form: 'UsersUpdateForm',
-  fields: ['name', 'email', 'day']
+  fields: ['name', 'email', 'day', 'week']
 }, null, mapDispatchToProps)(UsersUpdate);

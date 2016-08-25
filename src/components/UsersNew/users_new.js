@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
-import { createUser } from '../actions/index';
+import { createUser } from '../../actions/index';
 import { Link } from 'react-router';
 
 class UsersNew extends Component {
@@ -17,7 +17,7 @@ class UsersNew extends Component {
 
 
   render() {
-    const { fields: { name, email, day }, handleSubmit } = this.props;
+    const { fields: { name, email, day, week }, handleSubmit } = this.props;
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Create A New User</h3>
@@ -45,6 +45,14 @@ class UsersNew extends Component {
           </div>
         </div>
 
+        <div className={`form-group ${week.touched && week.invalid ? 'has-danger' : ''}`}>
+          <label>Week</label>
+          <input type="text" className="form-control" {...week}/ >
+          <div>
+            {week.touched ? week.error : ''}
+          </div>
+        </div>
+
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
@@ -67,11 +75,15 @@ function validate(values) {
     errors.day = "Enter a day this user needs to clean";
   }
 
+  if(!values.week) {
+    errors.day = "Enter the week this user is assigned to";
+  }
+
   return errors;
 }
 
 export default UsersNew = reduxForm({
   form: 'UsersNewForm',
-  fields: ['name', 'email', 'day'],
+  fields: ['name', 'email', 'day', 'week'],
   validate
 }, null, { createUser })(UsersNew);

@@ -1,8 +1,9 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchUsers } from '../actions/index'
+import { fetchUsers } from '../../actions/index'
 import { Link } from 'react-router';
+
 
 class UsersIndex extends Component {
 
@@ -11,16 +12,23 @@ class UsersIndex extends Component {
   }
 
   renderUsers() {
-    return this.props.users.map((user) => {
+    var sortUserByDay = this.props.users.slice(0);
+    sortUserByDay.sort(function(a,b) {
+      var x = a.day;
+      var y = b.day;
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+
+
+    return sortUserByDay.map((user) => {
       return (
         <li className="list-group-item" key={user.id}>
           <Link to={"users/" + user.id}>
-          <span className="pull-xs-right">{user.day} </span>
-          <strong>{user.name}   </strong>
-          <span> { '|' }</span>
+            <span className="pull-xs-left">Cleaning day:{user.day} week:{user.week}</span>
+            <strong className="pull-xs-left">{user.name}</strong>
           </Link>
           <Link to={"users/update/" + user.id}>
-            <span className={"pull-xs-left"}>update user</span>
+            <span className={"pull-xs-right"}>update user</span>
           </Link>
         </li>
       );
@@ -32,13 +40,18 @@ class UsersIndex extends Component {
     return (
       <div>
         <div className="text-xs-right">
-          <Link to="/users/new" className="btn btn-primary">
-          Add A user
-          </Link>
+          <div className="red-text">
+            red text
+          </div>
           <h3>Users</h3>
             <ul className="list-group">
               {this.renderUsers()}
             </ul>
+            <div>
+              <Link to="/users/new" className="btn btn-primary">
+              Add A user
+              </Link>
+            </div>
         </div>
       </div>
     );
