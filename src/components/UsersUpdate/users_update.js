@@ -21,7 +21,7 @@ class UsersUpdate extends Component {
 
 
   render() {
-    const { fields: { name, email, day, week }, handleSubmit } = this.props;
+    const { fields: { name, day, week }, handleSubmit } = this.props;
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Update User</h3>
@@ -29,11 +29,6 @@ class UsersUpdate extends Component {
           <label>Name</label>
           <input type="text" className="form-control"
            {...name}/ >
-        </div>
-
-        <div className={`form-group`}>
-          <label>email</label>
-          <input type="text" className="form-control" {...email}/ >
         </div>
 
         <div className={`form-group`}>
@@ -59,5 +54,5 @@ function mapDispatchToProps(dispatch) {
 
 export default UsersUpdate = reduxForm({
   form: 'UsersUpdateForm',
-  fields: ['name', 'email', 'day', 'week']
+  fields: ['name', 'day', 'week']
 }, null, mapDispatchToProps)(UsersUpdate);

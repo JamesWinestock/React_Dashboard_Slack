@@ -17,7 +17,7 @@ class UsersNew extends Component {
 
 
   render() {
-    const { fields: { name, email, day, week }, handleSubmit } = this.props;
+    const { fields: { name, day, week }, handleSubmit } = this.props;
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Create A New User</h3>
@@ -29,13 +29,6 @@ class UsersNew extends Component {
           </div>
         </div>
 
-        <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
-          <label>email</label>
-          <input type="text" className="form-control" {...email}/ >
-          <div>
-            {email.touched ? email.error : ''}
-          </div>
-        </div>
 
         <div className={`form-group ${day.touched && day.invalid ? 'has-danger' : ''}`}>
           <label>day</label>
@@ -67,10 +60,6 @@ function validate(values) {
     errors.name = "Enter a name";
   }
 
-  if(!values.email) {
-    errors.email = "Enter an email address";
-  }
-
   if(!values.day) {
     errors.day = "Enter a day this user needs to clean";
   }
@@ -84,6 +73,6 @@ function validate(values) {
 
 export default UsersNew = reduxForm({
   form: 'UsersNewForm',
-  fields: ['name', 'email', 'day', 'week'],
+  fields: ['name', 'day', 'week'],
   validate
 }, null, { createUser })(UsersNew);
