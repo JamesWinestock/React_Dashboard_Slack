@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { checkAuth } from '../../actions/index';
-import { AUTH_USER } from '../../actions/auth';
+import { AUTH_USER } from '../../actions/index';
 import { Link } from 'react-router';
 
 class Authenticate extends Component {
@@ -13,7 +13,7 @@ class Authenticate extends Component {
     onSubmit(props) {
       this.props.checkAuth(props)
       .then((response) => {
-        dispatch({ type: AUTH_USER})
+
     });
   }
   render () {

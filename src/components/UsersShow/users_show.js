@@ -32,7 +32,7 @@ static contextTypes = {
         onClick={this.onDeleteClick.bind(this)}>
           Delete User
         </button>
-        <h2 className="display-3">{user.name}</h2>
+        <h2 className="display-3">@{user.name}</h2>
         <h5 className="lead">Cleaning Day:{user.day}</h5>
         <h5 className="lead">Cleaning Week:{user.week}</h5>
 
